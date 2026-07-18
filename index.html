@@ -134,6 +134,7 @@ img{max-width:100%;display:block}
   font-family:'Yusei Magic';
 }
 .qlink.red{background:var(--dora-red);border-color:var(--dora-red-d)}
+.qlink.yellow{background:#c99400;border-color:#8a6600;color:#fff}
 .qlink-ico{font-size:22px;flex:none}
 .qlink small{opacity:.85;font-weight:400;font-family:'Kosugi Maru'}
 
@@ -399,6 +400,10 @@ tr:last-child td{border-bottom:none;font-weight:700;background:var(--paper2)}
       <span class="qlink-ico">🗺️</span>
       <span>渋滞回避の虎の巻<br><small>交通規制・迂回ルートPDF</small></span>
     </a>
+    <a href="https://nagaokamatsuri.com/img/access_parking_2026_1.pdf" target="_blank" class="qlink yellow">
+      <span class="qlink-ico">🅿️</span>
+      <span>駐車場一覧<br><small>公式リスト・料金・シャトルバス情報PDF</small></span>
+    </a>
   </div>
 
   <!-- DAY 0 -->
@@ -488,8 +493,8 @@ tr:last-child td{border-bottom:none;font-weight:700;background:var(--paper2)}
       <div class="tl-item">
         <div class="tl-dot"></div>
         <div class="tl-time">14:10頃 〜</div>
-        <div class="tl-title">駐車場 → 会場（徒歩）</div>
-        <div class="tl-detail">駐車場から信濃川河川敷（会場）まで徒歩約29分・約2.1km、ほぼ平坦。急がず移動して周辺で夕食・買い出しの時間に充てる想定</div>
+        <div class="tl-title">駐車場 → 会場（徒歩 or シャトルバス）</div>
+        <div class="tl-detail">駐車場のタイプにより移動手段が異なる。渡里町2-24付近なら徒歩約29分・約2.1km（ほぼ平坦）想定だが、シャトルバス方式の駐車場（例：国営越後丘陵公園なら片道約25分・行き15:00〜18:30運行）の場合はバス発着時刻に合わせて動く必要あり <span class="tag red">要確認</span></div>
         <div class="tl-card">夕食は屋台やコンビニでの調達を想定。会場周辺は<b>キャッシュレス決済がほぼ使えない</b>ので現金必須（持ち物リスト参照）</div>
       </div>
       <div class="tl-item key">
@@ -509,6 +514,12 @@ tr:last-child td{border-bottom:none;font-weight:700;background:var(--paper2)}
         <div class="tl-time">19:20 〜 21:25</div>
         <div class="tl-title">花火観覧 🎆</div>
         <div class="tl-detail">長岡まつり大花火大会 公式サイトで確認済み（両日とも同時間）</div>
+      </div>
+      <div class="tl-item warn">
+        <div class="tl-dot"></div>
+        <div class="tl-time">21:25以降</div>
+        <div class="tl-title">会場 → 駐車場（徒歩 or 帰りシャトルバス）</div>
+        <div class="tl-detail">シャトルバス方式の駐車場の場合、帰りの運行は20:30〜22:30。焦らず、しかし早めの便を目指す（遅い便ほど混雑）<span class="tag red">要確認</span></div>
       </div>
       <div class="tl-item warn">
         <div class="tl-dot"></div>
@@ -594,9 +605,10 @@ tr:last-child td{border-bottom:none;font-weight:700;background:var(--paper2)}
       <tr><td>長野→長岡<br><span style="color:#999">（車・能生経由）</span></td><td>高速代／ガソリン代</td><td>高速代：4,020〜5,740円<br>ガソリン代：約3,340円</td></tr>
       <tr><td>長岡→東京<br><span style="color:#999">（車・湯沢お風呂立寄り）</span></td><td>高速代／ガソリン代</td><td>高速代：4,200〜6,000円<br>ガソリン代：約4,230円</td></tr>
       <tr><td>三尺玉イス席チケット<br><span style="color:#999">（1人あたり）</span></td><td>長岡花火チケットセンター</td><td>5,000円</td></tr>
+      <tr><td>駐車場代<br><span style="color:#999">（1台あたり）</span></td><td>公式抽選制駐車場</td><td>1,000〜6,000円<br><span class="tag red">要確認</span>（駐車場により異なる）</td></tr>
       <tr><td>東京→名古屋/大阪</td><td>新幹線始発</td><td>未確定（予約時に確定）</td></tr>
     </table>
-    <p class="note">※ 確定しているのはMakotoの2区間の運賃（IC優先）と三尺玉イス席チケット代（一般販売価格）。車の高速代・ガソリン代は下記の詳細試算を参照。Aki/Nitoriの前日移動費、翌朝の新幹線代はまだ概算段階。確定次第このページを更新すること。</p>
+    <p class="note">※ 確定しているのはMakotoの2区間の運賃（IC優先）と三尺玉イス席チケット代（一般販売価格）。車の高速代・ガソリン代は下記の詳細試算を参照。駐車場代は公式リストの料金レンジで暫定表示、実際に予約した駐車場が判明次第確定させること。Aki/Nitoriの前日移動費、翌朝の新幹線代はまだ概算段階。</p>
 
     <div class="pr-block cost-detail">
       <h4>高速代・ガソリン代の詳細試算（燃費10km/L・175円/L換算）</h4>
@@ -633,7 +645,9 @@ tr:last-child td{border-bottom:none;font-weight:700;background:var(--paper2)}
     <ul class="alert-list">
       <li><b>交通規制：</b>8/2(日)・8/3(月)とも <b>17:30〜22:30頃</b> 車両通行止め（当日の状況により早まる場合あり）</li>
       <li><b>観覧席開場：</b>有料席 15:00頃（一部16:00）／無料席 17:00頃</li>
-      <li><b>公式駐車場：</b>有料観覧席チケット保有者のみ抽選制（2026年の抽選受付は6/19〜6/24で終了済み）。当グループは<b>長岡花火大会駐車場（新潟県長岡市渡里町2-24）を予約済み</b>（有料観覧席チケットに付属、または別途予約済み）。抽選に外れた場合の一般的な代替手段として「軒先パーキング」（新潟パーキング会・個人宅の駐車スペース事前予約）も参考情報として残しておく</li>
+      <li><b>公式駐車場：</b>有料観覧席チケット保有者のみ抽選制（2026年の抽選受付は6/19〜6/24で終了済み）。当グループは駐車場を予約済みだが、<b>公式リストのどの駐車場か（渡里町2-24含む）は要確認</b> <span class="tag red">要確認</span>。料金は駐車場ごとに1,000〜6,000円と幅があり、駐車場によって「徒歩◯分」タイプと「シャトルバス」タイプが混在する。予約確認メール・駐車券で番号と名称を確認し、このページを更新すること</li>
+      <li><b>シャトルバス方式の駐車場の場合：</b>例）国営越後丘陵公園（丘陵公園⇔会場、片道約25分）は料金5,000円にシャトルバス往復代込み。行き15:00〜18:30・帰り20:30〜22:30。帰りのシャトルバスが到着し退園確認できるまで閉門せず、車の翌日留め置きは不可。徒歩距離の駐車場とはタイムスケジュールが変わるため要確認</li>
+      <li><b>抽選に外れた場合の代替：</b>「軒先パーキング」（新潟パーキング会・個人宅の駐車スペース事前予約）も参考情報として残しておく</li>
       <li><b>実データ：</b>長岡IC周辺の国道8号は、通常7分の4.4km区間が最大<b>3時間以上</b>かかった記録あり。花火終了後は「車が全く動かない」レベルの大渋滞になる</li>
     </ul>
     <div class="route-good-bad">
@@ -692,7 +706,7 @@ tr:last-child td{border-bottom:none;font-weight:700;background:var(--paper2)}
   </div>
 
   <div class="links">
-    参考：<a href="https://nagaokamatsuri.com/" target="_blank">長岡まつり大花火大会 公式サイト</a> ／ <a href="https://nagaokamatsuri.com/img/access_traffic_regulation_2026_front.pdf" target="_blank">渋滞回避の虎の巻（交通規制PDF）</a>
+    参考：<a href="https://nagaokamatsuri.com/" target="_blank">長岡まつり大花火大会 公式サイト</a> ／ <a href="https://nagaokamatsuri.com/img/access_traffic_regulation_2026_front.pdf" target="_blank">渋滞回避の虎の巻（交通規制PDF）</a> ／ <a href="https://nagaokamatsuri.com/img/access_parking_2026_1.pdf" target="_blank">駐車場一覧PDF</a> ／ <a href="https://echigo-park.jp/cat_news/17573/" target="_blank">国営越後丘陵公園シャトルバス情報</a>
   </div>
 
 </div>
