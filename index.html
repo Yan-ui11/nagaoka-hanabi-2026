@@ -123,6 +123,39 @@ img{max-width:100%;display:block}
 .intro h2{font-family:'Yusei Magic';font-size:22px;color:var(--dora-blue-d);margin-bottom:10px}
 .intro p{color:var(--ink-soft);font-size:14px}
 
+/* 当日ダッシュボード */
+.dashboard{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:0 0 22px}
+.dash-card{
+  background:#fff;border:2px solid var(--paper2);border-radius:16px;
+  padding:12px 14px;box-shadow:3px 3px 0 rgba(0,0,0,.08);
+}
+.dash-card .dash-label{font-family:'Yusei Magic';font-size:10px;color:var(--ink-soft);letter-spacing:.5px;margin-bottom:4px}
+.dash-card .dash-value{font-family:'Yusei Magic';font-size:16px;color:var(--dora-blue-d);line-height:1.35}
+.dash-card.warn{border-color:rgba(228,3,46,.3)}
+.dash-card.warn .dash-value{color:var(--dora-red)}
+@media(min-width:520px){.dashboard{grid-template-columns:repeat(3,1fr)}}
+
+/* details/summary（詳細トグル） */
+details{margin-top:6px}
+summary.tl-toggle{
+  cursor:pointer;display:inline-flex;align-items:center;gap:4px;
+  font-family:'Yusei Magic';font-size:11px;color:var(--dora-blue-d);
+  background:#fff;border:1.5px solid var(--dora-blue);border-radius:999px;
+  padding:4px 12px;list-style:none;
+}
+summary.tl-toggle::-webkit-details-marker{display:none}
+summary.tl-toggle::after{content:"▶";font-size:9px}
+details[open] summary.tl-toggle::after{content:"▼";}
+details .tl-card,details .pr-block{margin-top:8px}
+summary.sec-toggle{
+  cursor:pointer;font-family:'Yusei Magic';font-size:14px;
+  padding-bottom:6px;border-bottom:2px solid var(--paper2);margin-bottom:10px;
+  list-style:none;
+}
+summary.sec-toggle::-webkit-details-marker{display:none}
+summary.sec-toggle::before{content:"▶ ";font-size:11px}
+details[open] summary.sec-toggle::before{content:"▼ ";}
+
 /* quick links */
 .quicklinks{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 36px}
 .qlink{
@@ -202,8 +235,8 @@ img{max-width:100%;display:block}
 
 /* Character callout boxes */
 .char-box{
-  display:flex;gap:14px;align-items:flex-start;
-  background:#fff;border-radius:20px;padding:16px;margin:22px 0;
+  display:flex;gap:12px;align-items:flex-start;
+  background:#fff;border-radius:18px;padding:12px 14px;margin:14px 0;
   box-shadow:var(--shadow);border:2px solid var(--paper2);
 }
 .char-box img{
@@ -306,13 +339,17 @@ tr:last-child td{border-bottom:none;font-weight:700;background:var(--paper2)}
 /* packing list */
 .pack-lead{margin-bottom:18px;font-size:13px}
 .pack-cat{margin:0 0 26px}
-.pack-cat h4{
+.pack-cat summary.pack-h4{
   font-family:'Yusei Magic';font-size:14px;margin-bottom:8px;
   padding-bottom:6px;border-bottom:2px solid var(--paper2);
+  cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;
 }
-.pack-cat.critical h4{color:var(--dora-red)}
-.pack-cat.hygiene h4{color:var(--dora-blue-d)}
-.pack-cat.bug h4{color:#1a8f52}
+.pack-cat summary.pack-h4::-webkit-details-marker{display:none}
+.pack-cat summary.pack-h4::after{content:"▶";font-size:11px;color:var(--ink-soft)}
+.pack-cat details[open] summary.pack-h4::after{content:"▼"}
+.pack-cat.critical summary.pack-h4{color:var(--dora-red)}
+.pack-cat.hygiene summary.pack-h4{color:var(--dora-blue-d)}
+.pack-cat.bug summary.pack-h4{color:#1a8f52}
 .pack-list{list-style:none}
 .pack-list li{display:flex;gap:10px;padding:10px 0;border-bottom:1px dashed var(--paper2)}
 .pack-list li:last-child{border-bottom:none}
@@ -326,6 +363,21 @@ tr:last-child td{border-bottom:none;font-weight:700;background:var(--paper2)}
   font-size:12.5px;background:var(--paper2);border-radius:14px;padding:12px 14px;
   border:1.5px solid rgba(0,152,219,.2);
 }
+
+/* 約束事リスト */
+.sec.yakusoku{border-color:rgba(201,148,0,.3)}
+.sec.yakusoku h3{color:#8a6600}
+.yakusoku-list{list-style:none}
+.yakusoku-list li{display:flex;gap:10px;padding:10px 0;border-bottom:1px dashed var(--paper2);align-items:flex-start}
+.yakusoku-list li:last-child{border-bottom:none}
+.yakusoku-list .ystat{
+  flex:none;font-family:'Yusei Magic';font-size:10px;
+  padding:3px 9px;border-radius:999px;margin-top:2px;white-space:nowrap;
+}
+.yakusoku-list .ystat.done{background:#e8fff2;color:#1a8f52;border:1px solid #a7e9c4}
+.yakusoku-list .ystat.pending{background:#fff4d6;color:#8a6600;border:1px solid #e0c060}
+.yakusoku-list .body b{display:block;font-size:14px;margin-bottom:2px}
+.yakusoku-list .body span{font-size:13px;color:var(--ink-soft)}
 
 /* checklist */
 .chk{list-style:none}
@@ -390,6 +442,34 @@ tr:last-child td{border-bottom:none;font-weight:700;background:var(--paper2)}
     <p>長岡まつり大花火大会へ、4人それぞれの出発地から集合して向かうプラン。<br>タイムテーブル・費用・注意事項をこの一冊にまとめたよ。</p>
   </div>
 
+  <!-- 当日ダッシュボード：迷ったらここだけ見ればいい -->
+  <div class="dashboard">
+    <div class="dash-card warn">
+      <div class="dash-label">🎆 花火</div>
+      <div class="dash-value">19:20〜21:25</div>
+    </div>
+    <div class="dash-card warn">
+      <div class="dash-label">🚧 交通規制</div>
+      <div class="dash-value">17:30〜22:30</div>
+    </div>
+    <div class="dash-card">
+      <div class="dash-label">🚉 長野集合</div>
+      <div class="dash-value">10:03着</div>
+    </div>
+    <div class="dash-card">
+      <div class="dash-label">🅿️ 駐車場</div>
+      <div class="dash-value">南部工業団地<br>4,000円</div>
+    </div>
+    <div class="dash-card">
+      <div class="dash-label">🕐 駐車場利用</div>
+      <div class="dash-value">15:00〜23:30</div>
+    </div>
+    <div class="dash-card warn">
+      <div class="dash-label">💴 会場は</div>
+      <div class="dash-value">現金必須</div>
+    </div>
+  </div>
+
   <!-- 当日の参考リンク -->
   <div class="quicklinks">
     <a href="https://nagaokamatsuri.com/" target="_blank" class="qlink">
@@ -419,7 +499,9 @@ tr:last-child td{border-bottom:none;font-weight:700;background:var(--paper2)}
         <div class="tl-time">20:35</div>
         <div class="tl-title">Makoto 千里山発</div>
         <div class="tl-detail">阪急千里線 → 淡路乗継 → 近鉄日本橋 → 近鉄奈良線 → 近鉄特急ひのとり（大阪上本町→近鉄名古屋）</div>
+        <details><summary class="tl-toggle">詳細を見る</summary>
         <div class="tl-card"><span class="tag">2時間59分</span><span class="tag pink">IC優先 5,430円</span>乗車券3,300円＋特急券2,130円<br><a class="tl-link" href="https://yahoo.jp/sg-Swg" target="_blank">🔗 ルート確認（Yahoo!路線情報）</a></div>
+        </details>
       </div>
       <div class="tl-item key">
         <div class="tl-dot"></div>
@@ -457,7 +539,9 @@ tr:last-child td{border-bottom:none;font-weight:700;background:var(--paper2)}
         <div class="tl-time">07:00</div>
         <div class="tl-title">Teppay・Makoto 名古屋発</div>
         <div class="tl-detail">JR特急しなの1号（当駅始発長野行）乗換0回</div>
+        <details><summary class="tl-toggle">詳細を見る</summary>
         <div class="tl-card"><span class="tag">3時間3分</span><span class="tag pink">IC優先 7,730円</span>乗車券4,580円＋特急料金3,150円<br><a class="tl-link" href="https://yahoo.jp/8a_MEG" target="_blank">🔗 ルート確認（Yahoo!路線情報）</a></div>
+        </details>
       </div>
       <div class="tl-item key">
         <div class="tl-dot"></div>
@@ -488,14 +572,18 @@ tr:last-child td{border-bottom:none;font-weight:700;background:var(--paper2)}
         <div class="tl-time">14:00頃 到着</div>
         <div class="tl-title">現地到着〈駐車場周辺で待機〉</div>
         <div class="tl-detail">駐車場の利用開始は15:00のため、到着後は周辺で待機。1,500台収容の人気駐車場なので早めに並んでおくと安心</div>
+        <details><summary class="tl-toggle">詳細を見る</summary>
         <div class="tl-card">観覧エリア：<b>長岡駅側（右岸・A会場）／有料観覧席</b><br>駐車場：<b>南部工業団地駐車場（新潟県長岡市南陽1丁目1027-4）</b>／4,000円（税込）／利用時間15:00〜23:30／A会場向け・無料シャトルバス付き<br><a class="tl-link" href="https://ticket-pass.com/tickets/view/632" target="_blank">🔗 駐車場詳細（予約サイト）</a></div>
+        </details>
       </div>
       <div class="tl-item key">
         <div class="tl-dot"></div>
         <div class="tl-time">15:00頃</div>
         <div class="tl-title">駐車場 利用開始 → 無料シャトルバスで会場へ → 有料観覧席 開場</div>
-        <div class="tl-detail">南部工業団地駐車場は無料シャトルバス付き。乗り場・本数は現地の案内に従う。三尺玉イス席（長岡駅側・A会場）は開演（19:20）まで余裕を持って着席しておく。17:30の交通規制開始まで約2時間半のバッファ</div>
+        <div class="tl-detail">南部工業団地駐車場は無料シャトルバス付き。三尺玉イス席（長岡駅側・A会場）は開演（19:20）まで余裕を持って着席しておく。17:30の交通規制開始まで約2時間半のバッファ</div>
+        <details><summary class="tl-toggle">詳細を見る</summary>
         <div class="tl-card">夕食は屋台やコンビニでの調達を想定。会場周辺は<b>キャッシュレス決済がほぼ使えない</b>ので現金必須（持ち物リスト参照）</div>
+        </details>
       </div>
       <div class="tl-item warn">
         <div class="tl-dot"></div>
@@ -602,35 +690,29 @@ tr:last-child td{border-bottom:none;font-weight:700;background:var(--paper2)}
       <tr><td>駐車場代<br><span style="color:#999">（1台あたり）</span></td><td>南部工業団地駐車場</td><td>4,000円（税込）</td></tr>
       <tr><td>東京→名古屋/大阪</td><td>新幹線始発</td><td>未確定（予約時に確定）</td></tr>
     </table>
-    <p class="note">※ 確定しているのはMakotoの2区間の運賃（IC優先）、三尺玉イス席チケット代（一般販売価格）、駐車場代。車の高速代・ガソリン代は下記の詳細試算を参照。Aki/Nitoriの前日移動費、翌朝の新幹線代はまだ概算段階。</p>
+    <p class="note">※ 確定しているのはMakotoの2区間の運賃（IC優先）、三尺玉イス席チケット代（一般販売価格）、駐車場代。車の高速代・ガソリン代は下記の詳細試算を参照。<b>復路は渋滞による燃費悪化・Aki/Nitoriの前日移動費・翌朝の新幹線代がまだ未確定</b>なので、出発前に詰めておくこと。</p>
 
-    <div class="pr-block cost-detail">
-      <h4>高速代・ガソリン代の詳細試算（燃費10km/L・175円/L換算）</h4>
-      <div class="tl-card">
-        <b>【往路】長野 → かにや横丁（能生）→ 長岡花火大会駐車場（約190.8km）</b><br>
-        高速料金（長野IC→能生IC）：通常2,970円／深夜・休日割引2,080円<br>
-        高速料金（能生IC→長岡IC）：通常2,770円／深夜・休日割引1,940円<br>
-        ガソリン：約19.1L・約3,340円<br>
-        合計：高速代 通常5,740円／深夜・休日割引4,020円、ガソリン代 約3,340円<br>
-        <a class="tl-link" href="https://www.navitime.co.jp/highway/route/searchlist?depIcId=21130&arvIcId=2130&depIcType=ic&arvIcType=ic" target="_blank">🔗 長野IC→能生IC（NAVITIME）</a>
-        <a class="tl-link" href="https://www.navitime.co.jp/highway/route/searchlist?depIcId=20280&arvIcId=2130&depIcType=ic&arvIcType=ic" target="_blank">🔗 長岡IC→能生IC（NAVITIME）</a>
+    <details>
+      <summary class="sec-toggle">高速代・ガソリン代の詳細試算を見る（燃費10km/L・175円/L換算）</summary>
+      <div class="pr-block cost-detail">
+        <div class="tl-card">
+          <b>【往路】長野 → かにや横丁（能生）→ 長岡花火大会駐車場（約190.8km）</b><br>
+          高速料金（長野IC→能生IC）：通常2,970円／深夜・休日割引2,080円<br>
+          高速料金（能生IC→長岡IC）：通常2,770円／深夜・休日割引1,940円<br>
+          ガソリン：約19.1L・約3,340円<br>
+          合計：高速代 通常5,740円／深夜・休日割引4,020円、ガソリン代 約3,340円<br>
+          <a class="tl-link" href="https://www.navitime.co.jp/highway/route/searchlist?depIcId=21130&arvIcId=2130&depIcType=ic&arvIcType=ic" target="_blank">🔗 長野IC→能生IC（NAVITIME）</a>
+          <a class="tl-link" href="https://www.navitime.co.jp/highway/route/searchlist?depIcId=20280&arvIcId=2130&depIcType=ic&arvIcType=ic" target="_blank">🔗 長岡IC→能生IC（NAVITIME）</a>
+        </div>
+        <div class="tl-card" style="margin-top:10px">
+          <b>【復路】長岡会場 → 湯沢IC（お風呂）→ 東京・練馬IC</b><br>
+          ① 会場→小千谷IC（下道・渋滞考慮）→湯沢IC：高速1,190円／ETC深夜830円、ガソリン約7.5L・約1,310円<br>
+          ② 湯沢IC→練馬IC：高速4,810円／ETC深夜3,370円、ガソリン約16.7L・約2,920円<br>
+          合計：高速代 通常6,000円／ETC深夜4,200円、ガソリン代 約4,230円（最低見積り）<br>
+          <span class="tag yellow">注意</span> 長岡〜小千谷間は下道の激しいストップ＆ゴーが想定され、実際の燃費は10km/Lを大幅に下回る可能性が高い。復路だけでガソリン代5,000円程度、往復＋現地移動込みで総額9,000〜10,000円程度を見込んでおくこと
+        </div>
       </div>
-      <div class="tl-card" style="margin-top:10px">
-        <b>【復路】長岡会場 → 湯沢IC（お風呂）→ 東京・練馬IC</b><br>
-        ① 会場→小千谷IC（下道・渋滞考慮）→湯沢IC：高速1,190円／ETC深夜830円、ガソリン約7.5L・約1,310円<br>
-        ② 湯沢IC→練馬IC：高速4,810円／ETC深夜3,370円、ガソリン約16.7L・約2,920円<br>
-        合計：高速代 通常6,000円／ETC深夜4,200円、ガソリン代 約4,230円（最低見積り）<br>
-        <span class="tag yellow">注意</span> 長岡〜小千谷間は下道の激しいストップ＆ゴーが想定され、実際の燃費は10km/Lを大幅に下回る可能性が高い。復路だけでガソリン代5,000円程度、往復＋現地移動込みで総額9,000〜10,000円程度を見込んでおくこと
-      </div>
-    </div>
-  </div>
-
-  <div class="char-box suneo">
-    <img src="Pic/suneo.jpg" alt="スネ夫">
-    <div class="bubble">
-      <div class="name">スネ夫のひとこと</div>
-      <p>長野→長岡の高速代・ガソリン代、ルート確定で数字もきれいになったね。でも復路の渋滞燃費悪化分は最低見積もりのままだし、東京からの新幹線代もまだ未定。ぼくなら出発前に全部きっちり確定させておくけどね。</p>
-    </div>
+    </details>
   </div>
 
   <!-- 重大な注意事項 -->
@@ -650,14 +732,14 @@ tr:last-child td{border-bottom:none;font-weight:700;background:var(--paper2)}
   </div>
 
   <!-- 約束事 -->
-  <div class="sec">
+  <div class="sec yakusoku">
     <h3><span class="bell">🤝</span>約束事</h3>
-    <ul class="alert-list">
-      <li><b>集合場所：</b>花火大会終了後、会場周辺は電波がほぼ入らなくなる。はぐれても連絡が取れない前提で、車（Akiの車）の集合場所を事前に決めておくこと <span class="tag red">要決定</span></li>
-      <li><b>観覧中にはぐれたら：</b>三尺玉イス席は座席番号が決まっているので、はぐれたら合流を焦らず自分の座席に戻ること。電波が無いので探し回らない</li>
-      <li><b>連絡先はアナログで持つ：</b>スマホの電波が無い・電池切れの前提で、4人全員のお互いの電話番号・車の集合場所・駐車場住所（南部工業団地駐車場、新潟県長岡市南陽1丁目1027-4）を紙に書くかスクリーンショットで保存しておくこと</li>
-      <li><b>車に戻る門限：</b>規制解除（22:30）後、車の集合場所に23:00までに戻らなければ〈対応要検討〉 <span class="tag red">要決定</span></li>
-      <li><b>荒天時の順延・中止：</b>小雨決行。荒天の場合は中断・中止の可能性があり、当日朝7時頃に決定される。順延の場合、8/2は8/16に、8/3は8/17に振替。チケットはそのまま有効（自己都合の返金は不可）</li>
+    <ul class="yakusoku-list">
+      <li><span class="ystat pending">要決定</span><div class="body"><b>集合場所</b><span>花火大会終了後、会場周辺は電波がほぼ入らなくなる。はぐれても連絡が取れない前提で、車（Akiの車）の集合場所を事前に決めておくこと</span></div></li>
+      <li><span class="ystat pending">要決定</span><div class="body"><b>車に戻る門限</b><span>規制解除（22:30）後、車の集合場所に23:00までに戻らなければ〈対応要検討〉</span></div></li>
+      <li><span class="ystat done">決定済み</span><div class="body"><b>観覧中にはぐれたら</b><span>三尺玉イス席は座席番号が決まっているので、はぐれたら合流を焦らず自分の座席に戻ること。電波が無いので探し回らない</span></div></li>
+      <li><span class="ystat done">決定済み</span><div class="body"><b>連絡先はアナログで持つ</b><span>スマホの電波が無い・電池切れの前提で、4人全員のお互いの電話番号・車の集合場所・駐車場住所（南部工業団地駐車場、新潟県長岡市南陽1丁目1027-4）を紙に書くかスクリーンショットで保存しておくこと</span></div></li>
+      <li><span class="ystat done">決定済み</span><div class="body"><b>荒天時の順延・中止</b><span>小雨決行。荒天の場合は中断・中止の可能性があり、当日朝7時頃に決定される。順延の場合、8/2は8/16に、8/3は8/17に振替。チケットはそのまま有効（自己都合の返金は不可）</span></div></li>
     </ul>
   </div>
 
@@ -667,7 +749,8 @@ tr:last-child td{border-bottom:none;font-weight:700;background:var(--paper2)}
     <p class="note pack-lead">「三尺玉イス席」の観覧条件に合わせた必須持ち物リスト。クッションは任意、無駄なものは省いて、これだけは絶対に忘れちゃいけないものだけをまとめてあるよ。チェックリストとして使ってね。</p>
 
     <div class="pack-cat critical">
-      <h4>【最重要】忘れたら会場に入れない・詰むもの</h4>
+      <details open>
+      <summary class="pack-h4">【最重要】忘れたら会場に入れない・詰むもの</summary>
       <ul class="pack-list">
         <li><span class="box"></span><div class="body"><b>「三尺玉イス席」の観覧チケット</b><span>4人それぞれが自分の分を持つ。スマートフォンの画面表示タイプなら、電波障害に備えて事前にスクリーンショットを必ず保存しておくこと。</span></div></li>
         <li><span class="box"></span><div class="body"><b>現金（1万円〜程度、千円札と小銭多め）</b><span>会場周辺は電波が不通になりやすく、キャッシュレス決済がほぼ使えなくなるから要注意だよ。</span></div></li>
@@ -675,23 +758,28 @@ tr:last-child td{border-bottom:none;font-weight:700;background:var(--paper2)}
         <li><span class="box"></span><div class="body"><b>歩き慣れたスニーカー</b><span>駅から席まで、帰りの大混雑でも1時間以上歩くことになる。サンダルや下駄は怪我のもとだよ。</span></div></li>
         <li><span class="box"></span><div class="body"><b>大きめのゴミ袋（2〜3枚）</b><span>自分のゴミを入れるほか、パイプ椅子の下に荷物を置くときの「敷物」や「泥よけ」としても必要だよ。</span></div></li>
       </ul>
+      </details>
     </div>
 
     <div class="pack-cat hygiene">
-      <h4>【環境・衛生】過酷な河川敷を生き抜くためのもの</h4>
+      <details>
+      <summary class="pack-h4">【環境・衛生】過酷な河川敷を生き抜くためのもの</summary>
       <ul class="pack-list">
         <li><span class="box"></span><div class="body"><b>ウエットティッシュ ＆ 水に流せるポケットティッシュ</b><span>仮設トイレのトイレットペーパーは高確率で切れてる。手の汚れを拭くためにも多めに持っておこう。</span></div></li>
         <li><span class="box"></span><div class="body"><b>レインコート（カッパ）</b><span>会場内は傘・日傘の使用が禁止されてるから、雨が降ったらこれしかない。</span></div></li>
         <li><span class="box"></span><div class="body"><b>冷凍したペットボトル飲料（スポーツドリンク等） ＆ 塩分タブレット</b><span>夕方でも熱中症のリスクは高いし、周辺の自販機はすぐ売り切れる。事前に凍らせたものを持っていこう。</span></div></li>
         <li><span class="box"></span><div class="body"><b>タオル（バスタオル推奨）</b><span>帰りに立ち寄り入浴（<a href="#ofuro-proposal">復路のお風呂案</a>）を使うなら必須。荷物に入れておくと安心だよ。</span></div></li>
       </ul>
+      </details>
     </div>
 
     <div class="pack-cat bug">
-      <h4>【防虫】快適に観るためのもの</h4>
+      <details>
+      <summary class="pack-h4">【防虫】快適に観るためのもの</summary>
       <ul class="pack-list">
         <li><span class="box"></span><div class="body"><b>虫よけスプレー ＆ 痒み止め</b><span>草むらの多い河川敷。日が落ちると蚊が大量発生するよ。</span></div></li>
       </ul>
+      </details>
     </div>
 
     <div class="pack-note">荷物はこれらすべてを<b>リュックサックなど「両手が完全に自由になるカバン」</b>にまとめよう。帰りの大混雑で手荷物を持っていると、押し合いになったときに危険だよ。しっかり準備して臨もう。</div>
