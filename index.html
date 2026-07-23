@@ -148,13 +148,15 @@ summary.tl-toggle::after{content:"▶";font-size:9px}
 details[open] summary.tl-toggle::after{content:"▼";}
 details .tl-card,details .pr-block{margin-top:8px}
 summary.sec-toggle{
-  cursor:pointer;font-family:'Yusei Magic';font-size:14px;
-  padding-bottom:6px;border-bottom:2px solid var(--paper2);margin-bottom:10px;
+  cursor:pointer;font-family:'Yusei Magic';font-size:13px;color:var(--dora-blue-d);
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--paper2);border:1.5px solid var(--dora-blue);border-radius:999px;
+  padding:6px 14px;margin-bottom:10px;
   list-style:none;
 }
 summary.sec-toggle::-webkit-details-marker{display:none}
-summary.sec-toggle::before{content:"▶ ";font-size:11px}
-details[open] summary.sec-toggle::before{content:"▼ ";}
+summary.sec-toggle::before{content:"▶";font-size:10px}
+details[open] summary.sec-toggle::before{content:"▼";}
 
 /* quick links */
 .quicklinks{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 36px}
@@ -245,12 +247,10 @@ details[open] summary.sec-toggle::before{content:"▼ ";}
   object-fit:cover;object-position:50% 15%;
 }
 .char-box.gian img{border-color:#c05a00;object-position:50% 10%}
-.char-box.suneo img{border-color:#6ab7d8;object-position:50% 10%}
 .char-box.dorami img{border-color:var(--dora-yellow);object-position:50% 8%}
 .char-box .name{font-family:'Yusei Magic';font-size:13px;margin-bottom:4px}
 .char-box.doraemon .name{color:var(--dora-blue-d)}
 .char-box.gian .name{color:#c05a00}
-.char-box.suneo .name{color:#6ab7d8}
 .char-box.dorami .name{color:#d69f00}
 .char-box .bubble{position:relative}
 .char-box .bubble::before{
@@ -694,7 +694,7 @@ tr:last-child td{border-bottom:none;font-weight:700;background:var(--paper2)}
 
     <details>
       <summary class="sec-toggle">高速代・ガソリン代の詳細試算を見る（燃費10km/L・175円/L換算）</summary>
-      <div class="pr-block cost-detail">
+      <div class="pr-block">
         <div class="tl-card">
           <b>【往路】長野 → かにや横丁（能生）→ 長岡花火大会駐車場（約190.8km）</b><br>
           高速料金（長野IC→能生IC）：通常2,970円／深夜・休日割引2,080円<br>
@@ -762,7 +762,7 @@ tr:last-child td{border-bottom:none;font-weight:700;background:var(--paper2)}
     </div>
 
     <div class="pack-cat hygiene">
-      <details>
+      <details open>
       <summary class="pack-h4">【環境・衛生】過酷な河川敷を生き抜くためのもの</summary>
       <ul class="pack-list">
         <li><span class="box"></span><div class="body"><b>ウエットティッシュ ＆ 水に流せるポケットティッシュ</b><span>仮設トイレのトイレットペーパーは高確率で切れてる。手の汚れを拭くためにも多めに持っておこう。</span></div></li>
